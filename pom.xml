@@ -22,7 +22,7 @@
     <groupId>mysql</groupId>
     <artifactId>mysql-connector-java</artifactId>
     <version>5.1.18</version>
-    <scope>System</scope>
+    <scope>compile</scope>
 </dependency>
 
 <dependency>
@@ -41,13 +41,13 @@
     <groupId>io.jsonwebtoken</groupId>
     <artifactId>jjwt-impl</artifactId>
     <version>0.11.1</version>
-    <scope>runtime</scope>
+    <scope>compile</scope>
 </dependency>
 <dependency>
     <groupId>io.jsonwebtoken</groupId>
     <artifactId>jjwt-jackson</artifactId>
     <version>0.11.1</version>
-    <scope>runtime</scope>
+    <scope>compile</scope>
 </dependency>
 
 		<dependency>
