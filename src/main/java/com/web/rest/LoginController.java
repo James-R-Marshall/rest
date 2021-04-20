@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "http://216.137.177.30", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 
     public class LoginController {
