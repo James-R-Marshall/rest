@@ -23,6 +23,7 @@ public class JwtProvider {
               Key hmacKey = new SecretKeySpec("asdfSFS34wfsdfsdfSDSD32dfsddDDerQSNCK34SOWEK5354fdgdf4".getBytes(), SignatureAlgorithm.HS256.getJcaName());
         String jwtToken = Jwts.builder()
                     .claim("Username", new String(user.getUsername()))
+                    .claim("email", new String(user.getEmail()))
                     .setIssuedAt(new Date())
                     .setExpiration((new Date((new Date()).getTime() + jwtExpiration*1000)))
                     .signWith(hmacKey)
