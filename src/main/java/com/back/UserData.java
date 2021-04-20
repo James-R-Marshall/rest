@@ -32,6 +32,7 @@ public class UserData {
             while(rs.next()){
                 byte[] c = rs.getBytes("Username");
                     currUser.setUsername(c);
+                    currUser.setEmail(rs.getString("email"));
                     currUser.setPassword(rs.getBytes(2));
                     currUser.setSalt(rs.getBytes(3));
                     currUser.setID(rs.getInt("ID"));
@@ -101,6 +102,7 @@ public class UserData {
                 User currUser = new User();
             rs = st.executeQuery(statement);
             while(rs.next()){
+                    currUser.setEmail(rs.getString("email"));
                     currUser.setUsername(rs.getBytes(1));
                     currUser.setPassword(rs.getBytes(2));
                     currUser.setSalt(rs.getBytes(3));
@@ -125,6 +127,7 @@ public class UserData {
                 byte[] c = rs.getBytes("Username");
                 byte[] tc = username;
                 if (Arrays.equals(c, tc)) {
+                    currUser.setEmail(rs.getString("email"));
                     currUser.setUsername(username);
                     currUser.setPassword(rs.getBytes(2));
                     currUser.setSalt(rs.getBytes(3));
