@@ -38,23 +38,31 @@ public class SQLPo {
         }
     }
 
-    // // need to create table for PO's and swap this string
-    // public void createEntry(String ID, observablePO p) {
-    //     String statement = "INSERT INTO PO(productID,quantity,date,email,custLoc) VALUES('" + p.getProductID() + "', '" + p.getQuantity()
-    //             + "' , '" + p.getDate() + "' , '" + p.getEmail() + "' , '" + p.getCustomerLocation()  +"');";
-    //     String statement2 = "GET * FROM PO WHERE productID = '" + p.getProductID() + "' AND date = '" + p.getDate() + "';";
-    //     try {
-    //         st.execute(statement);
-    //         rs = st.executeQuery(statement2);
-    //         p.setID(rs.getInt("ID"));
+  // need to create table for PO's and swap this string
+  public void createEntry(String ID, PO p) {
+    String statement = "INSERT INTO PO(productID,quantity,date,email,custLoc) VALUES('" + p.getProductID() + "', '" + p.getQuantity()
+        + "' , '" + p.getDate() + "' , '" + p.getEmail() + "' , '" + p.getCustomerLocation()  +"');";
+    String statement2 = "GET * FROM PO WHERE productID = '" + p.getProductID() + "' AND date = '" + p.getDate() + "';";
+    try {
+        st.execute(statement);
 
-    //     } catch (SQLException e1) {
-    //         e1.printStackTrace();
-    //     }
+    } catch (SQLException e1) {
+        e1.printStackTrace();
+    }
+}
 
-    // }
+public boolean poExists(String PID, int quantity, String date, String email, String location) {
+    String statement2 = "SELECT * FROM PO WHERE productID = '" + PID + "' AND quantity = '" + quantity + "' AND date = '" + date + "' AND email = '" + email + "' AND custLoc = '" + location + "';";       
+    try {
+        rs = st.executeQuery(statement2);
+        return rs.next();
+    } catch (SQLException e1) {
+        e1.printStackTrace();
+    }
 
-    
+    return false;
+}
+
     public List<Order> GenerateShortPOs(String email){
         List<Order> arr = new ArrayList<Order>();
         String statement2 = "SELECT * FROM PO WHERE email = '"+email+"';";
@@ -79,29 +87,28 @@ public class SQLPo {
         return arr;
     }
 
-    // public PO getPo(int ID) {
-    //     String statement2 = "SELECT * FROM PO WHERE id = '" + ID + "';";
-    //     PO po = new PO();
-    //     try {
-    //         rs = st.executeQuery(statement2);
-    //         rs.next();
-    //         po.setDate(rs.getString("date"));
-    //         po.setID(rs.getInt("ID"));
-    //         po.setProductID(rs.getString("productID"));
-    //         po.customerLocation = rs.getString("custLoc");
-    //     } catch (SQLException e1) {
-    //         e1.printStackTrace();
-    //     }
-
-    //     return po;
-    // }
+    public PO getPo(int ID) {
+        String statement2 = "SELECT * FROM PO WHERE id = '" + ID + "';";
+        PO po = new PO();
+        try {
+            rs = st.executeQuery(statement2);
+            rs.next();
+            po.setDate(rs.getString("date"));
+            po.setID(rs.getInt("ID"));
+            po.setProductID(rs.getString("productID"));
+            po.customerLocation = rs.getString("custLoc");
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }
+        return po;
+    }
 
     
 
-    // public void updateEntry(String ID, Entry e) {
-    //     // TODO Auto-generated method stub
+    public void updateEntry(String ID, Entry e) {
+        // TODO Auto-generated method stub
 
-    // }
+    }
 
     // public void deleteEntry(String id) {
     //     // TODO Auto-generated method stub
