@@ -95,6 +95,8 @@ public boolean poExists(String PID, int quantity, String date, String email, Str
             rs.next();
             po.setDate(rs.getString("date"));
             po.setID(rs.getInt("ID"));
+            po.setEmail(rs.getString("email"));
+            po.quantity(rs.getInt("quantity"));
             po.setProductID(rs.getString("productID"));
             po.customerLocation = rs.getString("custLoc");
         } catch (SQLException e1) {
