@@ -36,4 +36,11 @@ import org.springframework.web.bind.annotation.RestController;
         return c;
 
     }
+    @GetMapping("/login/new")
+    public void listProducts(@RequestParam(value = "username", defaultValue = "0") String username, @RequestParam(value = "password", defaultValue = "1") String password, @RequestParam(value = "email", defaultValue = "none") String email) throws NoSuchAlgorithmException, InvalidKeySpecException{
+        UserData init = new UserData();
+        init.initializeDatabase("jdbc:mysql://216.137.177.30:3306/testDB?allowPublicKeyRetrieval=true&useSSL=false team3 UpdateTrello!1");
+        UserAuthenticator ua = new UserAuthenticator();
+        UserAuthenticator.createUser(username, password,email, init);
+    }
 }
