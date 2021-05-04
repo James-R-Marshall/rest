@@ -86,11 +86,12 @@ public class UserData {
         byte[] ubytes = e.getUsername();
         byte[] pbytes = e.getPassword();
         byte[] sbytes = e.getSalt();
-        String sql = "INSERT INTO Users(Username,Password,salt) VALUES(?,?,?)";
+        String sql = "INSERT INTO Users(Username,Password,salt,email) VALUES(?,?,?,?)";
         try (PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql)) {
                 pst.setBytes(1, ubytes);
                 pst.setBytes(2, pbytes);
                 pst.setBytes(3, sbytes);
+                pst.setString(4, e.getEmail());
                 pst.executeUpdate();
         } catch (SQLException ex) {
         }
